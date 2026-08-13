@@ -1,0 +1,44 @@
+{
+  "manifest_version": 2,
+  "name": "BooruBrapper",
+  "version": "1.8.0",
+  "description": "Advanced Soybooru spammer for brapping up the booru!",
+  "icons": {
+    "48": "icons/icon48.png",
+    "96": "icons/icon96.png"
+  },
+  "browser_action": {
+    "default_icon": {
+      "48": "icons/icon48.png",
+      "96": "icons/icon96.png"
+    },
+    "default_title": "BooruBrapper – toggle panel on page"
+  },
+  "permissions": [
+    "activeTab",
+    "storage",
+    "https://soybooru.com/*",
+    "https://*.soybooru.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://soybooru.com/post/view/*",
+        "https://soybooru.com/post/*"
+      ],
+      "js": ["content/content.js"],
+      "css": ["content/content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "background": {
+    "scripts": ["background/background.js"],
+    "persistent": false
+  },
+  "applications": {
+    "gecko": {
+      "id": "boorubrapper@soybooru.local",
+      "strict_min_version": "109.0"
+    }
+  }
+}
